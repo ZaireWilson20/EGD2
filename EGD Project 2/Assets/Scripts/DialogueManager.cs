@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public ArrayList dialogueLines;
 
     public GameObject[] textBoxes;
+    int numTextBoxes = 0;
 
     public float speed = 2;
 
@@ -49,7 +50,7 @@ public class DialogueManager : MonoBehaviour
 
         AquireTextBoxes();
 
-        for(int x = 0; x < textBoxes.Length; x++)
+        for(int x = 0; x < numTextBoxes; x++)
         {
             textBoxes[x].SetActive(false);
         }
@@ -118,30 +119,6 @@ public class DialogueManager : MonoBehaviour
         {
             textBoxes[speaker].SetActive(true);
         }
-        //if (speaker == 1)
-        //{
-        //    textboxBackground.GetComponent<Image>().color = new Color(1, 0, 0);
-        //}
-        //else if (speaker == 2)
-        //{
-        //    textboxBackground.GetComponent<Image>().color = new Color(0, 1, 0);
-        //}
-        //else if (speaker == 3)
-        //{
-        //    textboxBackground.GetComponent<Image>().color = new Color(0, 0, 1);
-        //}
-        //else if (speaker == 4)
-        //{
-        //    textboxBackground.GetComponent<Image>().color = new Color(1, 0, 1);
-        //}
-        //else if (speaker == 5)
-        //{
-        //    textboxBackground.GetComponent<Image>().color = new Color(0, 1, 1);
-        //}
-        //else if (speaker == 6)
-        //{
-        //    textboxBackground.GetComponent<Image>().color = new Color(1, 1, 0);
-        //}
         float x = 0;
         //print("got here w");
         while (true)
@@ -182,34 +159,20 @@ public class DialogueManager : MonoBehaviour
 
     void AquireTextBoxes()
     {
-        //blackTextBox = GameObject.FindGameObjectWithTag("PlayerBlack_textbox");
-        //whiteTextBox = GameObject.FindGameObjectWithTag("PlayerWhite_textbox");
-        //otherTextBox = GameObject.FindGameObjectWithTag("Other_textbox");
-    }
-
-    //When a priority textbox is hit, wait for both players to be on the ground before stopping gravity
-    IEnumerator FloatWatch()
-    {
-        float time = Time.time;
-        while (Time.time - time < .1)
+        Image[] holder = GameObject.FindObjectsOfType<Image>();
+        textBoxes = new GameObject[holder.Length];
+        int count = 0;
+        foreach(Image x in holder)
         {
-            yield return null;
-        }
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        bool falling = true;
-        while (falling)
-        {
-
-            if (Mathf.Abs(0 - players[0].GetComponent<Rigidbody2D>().velocity.y) <= .1 && Mathf.Abs(0 - players[1].GetComponent<Rigidbody2D>().velocity.y) <= .1)
+            print(x.gameObject.name.Substring(0, x.gameObject.name.Length - 1));
+            print(x.gameObject.name.Substring(x.gameObject.name.Length - 1));
+            if (x.gameObject.name.Substring(0, x.gameObject.name.Length - 1).Equals("TextBox"))
             {
-                foreach (GameObject p in players)
-                {
-                    p.GetComponent<Rigidbody2D>().gravityScale = 0;
-                    p.GetComponent<Rigidbody2D>().velocity = new Vector3(0f, 0f, 0f);
-                }
-                falling = false;
+                int num = int.Parse(x.gameObject.name.Substring(x.gameObject.name.Length - 1));
+                textBoxes[num] = x.gameObject;
+                count++;
             }
-            yield return null;
         }
+        numTextBoxes = count;
     }
 }
