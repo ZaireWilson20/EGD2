@@ -99,6 +99,13 @@ public class Rylie : MonoBehaviour
         }
         */
 
+
+        InputHandler();
+        CharacterController.MoveCharacter(rylieRB, transform.position, movementDirection * Time.deltaTime * playerSpeed);
+    }
+
+    public void InputHandler()
+    {
         if (!facingBack)
         {
             if (movementDirection.x < 0)
@@ -121,23 +128,20 @@ public class Rylie : MonoBehaviour
                 rylieSprite.flipX = false;
             }
         }
-        if(movementDirection.y > 0)
+        if (movementDirection.y > 0)
         {
             rylieSprite.sprite = backSprite;
-            facingBack = true; 
+            rylieSprite.flipX = false;
+
+            facingBack = true;
         }
-        else if(movementDirection.y < 0)
+        else if (movementDirection.y < 0)
         {
             rylieSprite.sprite = frontSprite;
-            rylieSprite.flipX = false; 
-            facingBack = false; 
+            facingBack = false;
         }
         movementDirection = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
-        movementDirection.Normalize(); 
-
-        rylieRB.MovePosition(transform.position + movementDirection * Time.deltaTime * playerSpeed);
-        
-        //transform.Translate(movementDirection*Time.deltaTime*playerSpeed);
+        movementDirection.Normalize();
     }
 
     /*
