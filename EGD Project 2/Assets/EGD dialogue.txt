@@ -1,18 +1,17 @@
-100{0}Your stuffed animal.  Its shaped like a friend.[0]-1
-100{0}Your bed.  You should make it before Mom tells you to.[0]-1
-100{0}A tv.  It would be more fun if you turned it on.[0]-1
-100{0}Oh it’s just the news[0]-1
-100{0}It’s a picture of you and your parents.  Everyone looks happy.[0]-1
-100{0}The coffee maker.  Dad’s best friend.[0]-1
-100{0}A bookshelf.  Full of books and knowledge.[0]-1
-100{0}The Shower.  Not right now, you have all your clothes on.[0]-1
-100{0}The refrigerator.[0]-1
-100{0}The Stove.  You can’t reach the top, better not try after last time.[0]-1
-100{0}Your mother.  You should not bother her, she is still working.[0]-1
-100{0}Your father.  Hopefully something tasty is for dinner.[0]-1
-100{0}Your cat Alice.[0]-1
-100{0}Your dog Squid.[0]-1
-100{0}Squid’s food bowl.[0]-1
-100{0}Alice’s food bowl.[0]-1
-100{0}Your shampoo.  The bottle said no tears, that was a lie.[0]-1
-100{0}Flowers.  They look nice[0]-1
+.5{0}Your stuffed animal.  Its shaped like a friend.[3]-1
+.5{0}Your bed.  You should make it before Mom tells you to.[3]-1
+.5{0}A tv.  It would be more fun if you turned it on.[3]-1
+.5{0}It’s a picture of you and your parents.  Everyone looks happy.[3]-1
+.5{0}The coffee maker.  Dad’s best friend.[3]-1
+.5{0}A bookshelf.  Full of books and knowledge.[3]-1
+.5{0}The Shower.  Not right now, you have all your clothes on.[3]-1
+.5{0}The refrigerator.[3]-1
+.5{0}The Stove.  You can’t reach the top, better not try after last time.[3]-1
+.5{0}Your mother.  You should not bother her, she is still working.[3]-1
+.5{0}Your father.  Hopefully something tasty is for dinner.[3]-1
+.5{0}Your cat Alice.[3]-1
+.5{0}Your dog Squid.[3]-1
+.5{0}Squid’s food bowl.  the bowl is licked clean.[3]-1
+.5{0}Alice’s food bowl.  There's still some food left.[3]-1
+.5{0}Your shampoo.  The bottle said no tears, that was a lie.[3]-1
+.5{0}Flowers.  They look nice[3]-1
