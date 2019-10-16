@@ -17,7 +17,8 @@ public class Rylie : MonoBehaviour
     private Sprite frontSprite; 
     private SpriteRenderer rylieSprite; 
     private Rigidbody2D rylieRB;
-    private bool facingBack; 
+    private bool facingBack;
+    private Animator ryAnim; 
     /*
     [SerializeField]
     private float moveSpeed = 3f;
@@ -42,7 +43,8 @@ public class Rylie : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        ryAnim = this.GetComponent<Animator>(); 
         rylieSprite = this.gameObject.GetComponent<SpriteRenderer>();
         rylieRB = this.gameObject.GetComponent<Rigidbody2D>();
         backSprite = Resources.Load<Sprite>("Kid_SpriteBack");
@@ -121,11 +123,11 @@ public class Rylie : MonoBehaviour
         {
             if (movementDirection.x < 0)
             {
-                rylieSprite.flipX = true;
+                rylieSprite.flipX = false;
             }
             else if (movementDirection.x > 0)
             {
-                rylieSprite.flipX = false;
+                rylieSprite.flipX = true;
             }
         }
         if (movementDirection.y > 0)
@@ -140,8 +142,57 @@ public class Rylie : MonoBehaviour
             rylieSprite.sprite = frontSprite;
             facingBack = false;
         }
+
+
         movementDirection = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+        if(movementDirection.y > 0)
+        {
+            ryAnim.SetBool("FMove", false);
+            ryAnim.SetBool("BMove", true);
+        }
+        else if(movementDirection.y < 0)
+        {
+            ryAnim.SetBool("FMove", true);
+            ryAnim.SetBool("BMove", false);
+        }
+        else if(movementDirection.x != 0 && movementDirection.y == 0)
+        {
+            ryAnim.SetBool("FMove", true);
+            ryAnim.SetBool("BMove", false);
+        }
+        else if(movementDirection.x == 0 && movementDirection.y == 0)
+        {
+            ryAnim.SetBool("FMove", false);
+            ryAnim.SetBool("BMove", false);
+        }
+        /*
+        if(movementDirection.y != 0)
+        {
+            if(movementDirection.x != 0)
+            {
+
+            }
+            if (movementDirection.y > 0) {
+                ryAnim.SetBool("FMove", false);
+                ryAnim.SetBool("BMove", true);
+
+            }
+            else if(movementDirection.y < 0)
+            {
+                ryAnim.SetBool("BMove", true);
+                ryAnim.SetBool("FMove", false);
+            }
+        }
+        else
+        {
+            ryAnim.SetBool("FMove", false);
+            ryAnim.SetBool("BMove", false);
+
+        }
+        */
+
         movementDirection.Normalize();
+        
     }
 
     /*
