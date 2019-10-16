@@ -1,0 +1,6 @@
+.2{0}Testing box 0[2]1
+.2{1}Testing box 1[2]2
+100{0}Box 0 with no crawl[2]3
+100{1}Box 1 with no crawl[2]4
+2{2}This is a thought box[1]5
+100{2}This is a thought box no crawl[2]-1
