@@ -50,3 +50,6 @@ TagManager:
   - name: Characters
     uniqueID: 867073079
     locked: 0
+  - name: Player
+    uniqueID: 2653819659
+    locked: 0
