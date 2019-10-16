@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
 
     public bool isEpilogue = false;
 
-    int speedMult = 1;
+    public int speedMult = 1;
 
 
     //public AudioSource audio;
