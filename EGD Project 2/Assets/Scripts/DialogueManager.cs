@@ -4,6 +4,7 @@ using System.IO;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro; 
 
 public class DialogueManager : MonoBehaviour
 {
@@ -113,8 +114,8 @@ public class DialogueManager : MonoBehaviour
         //textbox.SetActive(true);
         //spritebox.SetActive(true);
         //print("got here 1");
-        Text textbox = null;
-        textbox = textBoxes[speaker].GetComponentInChildren<Text>();
+        TMPro.TMP_Text textbox = null;
+        textbox = textBoxes[speaker].GetComponentInChildren<TMPro.TMP_Text>();
         if (line.Length > 0)
         {
             textBoxes[speaker].SetActive(true);

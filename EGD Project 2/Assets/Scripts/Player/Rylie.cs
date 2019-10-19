@@ -18,7 +18,10 @@ public class Rylie : MonoBehaviour
     private SpriteRenderer rylieSprite; 
     private Rigidbody2D rylieRB;
     private bool facingBack;
-    private Animator ryAnim; 
+    private Animator ryAnim;
+
+    private bool in_InteractRange;
+    private Interactables currentInteractable; 
     /*
     [SerializeField]
     private float moveSpeed = 3f;
@@ -55,6 +58,8 @@ public class Rylie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Interact(); 
         /*
         if (currVect == Vector3Int.zero)
         {
@@ -240,6 +245,26 @@ public class Rylie : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("COLLIDED");
+        if (collision.tag == "Interactable")
+        {
+            in_InteractRange = true; 
+            currentInteractable = collision.GetComponent<Interactables>(); 
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Interactable")
+        {
+            in_InteractRange = false;
+        }
+    }
+
+    private void Interact()
+    {
+        if (in_InteractRange && Input.GetKeyDown(KeyCode.Space))
+        {
+            currentInteractable.InitDialogue(); 
+        }
     }
 }
