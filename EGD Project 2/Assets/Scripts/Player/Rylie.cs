@@ -20,6 +20,8 @@ public class Rylie : MonoBehaviour
     private bool facingBack;
     private Animator ryAnim;
 
+    private bool bounce;
+    private float time_pressed = -1;
     private bool in_InteractRange;
     private Interactables currentInteractable; 
     /*
@@ -60,6 +62,7 @@ public class Rylie : MonoBehaviour
     {
 
         Interact(); 
+
         /*
         if (currVect == Vector3Int.zero)
         {
@@ -150,7 +153,20 @@ public class Rylie : MonoBehaviour
 
 
         movementDirection = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
-        if(movementDirection.y > 0)
+        if (movementDirection.x != 0 || movementDirection.y != 0)
+        {
+            ryAnim.SetBool("Bounce", false);
+            time_pressed = Time.time;
+        }
+        if(movementDirection.x == 0 && movementDirection.y == 0)
+        {
+            float timeDiff = Time.time - time_pressed;
+            if(timeDiff > 5f)
+            {
+                ryAnim.SetBool("Bounce", true);
+            }
+        }
+        if (movementDirection.y > 0)
         {
             ryAnim.SetBool("FMove", false);
             ryAnim.SetBool("BMove", true);
