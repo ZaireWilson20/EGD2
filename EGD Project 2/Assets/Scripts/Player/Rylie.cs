@@ -23,7 +23,8 @@ public class Rylie : MonoBehaviour
     private bool bounce;
     private float time_pressed = -1;
     private bool in_InteractRange;
-    private Interactables currentInteractable; 
+    private Interactables currentInteractable;
+    private DialogueManager diaMan; 
     /*
     [SerializeField]
     private float moveSpeed = 3f;
@@ -54,6 +55,7 @@ public class Rylie : MonoBehaviour
         rylieRB = this.gameObject.GetComponent<Rigidbody2D>();
         backSprite = Resources.Load<Sprite>("Kid_SpriteBack");
         frontSprite = Resources.Load<Sprite>("Kid_SpriteFront");
+        diaMan = FindObjectOfType<DialogueManager>(); 
         
     }
 
@@ -278,7 +280,7 @@ public class Rylie : MonoBehaviour
 
     private void Interact()
     {
-        if (in_InteractRange && Input.GetKeyDown(KeyCode.Space))
+        if (in_InteractRange && Input.GetKeyDown(KeyCode.Space) && !diaMan.textReading)
         {
             currentInteractable.InitDialogue(); 
         }

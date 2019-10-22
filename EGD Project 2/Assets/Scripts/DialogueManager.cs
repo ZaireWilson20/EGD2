@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour
     int currentlySpeaking;
     int bufferedLines;
 
+    public bool textReading = false; 
     //public GameObject imageController;
     // Use this for initialization
     void Start()
@@ -118,6 +119,7 @@ public class DialogueManager : MonoBehaviour
         textbox = textBoxes[speaker].GetComponentInChildren<TMPro.TMP_Text>();
         if (line.Length > 0)
         {
+            textReading = true; 
             textBoxes[speaker].SetActive(true);
         }
         float x = 0;
@@ -145,6 +147,7 @@ public class DialogueManager : MonoBehaviour
         }
         //audio.Stop();
         textBoxes[speaker].SetActive(false);
+        textReading = false; 
         //print("got here3");
         if (nextLineVar != -1)
         {
