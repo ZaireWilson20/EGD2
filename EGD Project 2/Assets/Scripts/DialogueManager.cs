@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     int currentlySpeaking;
     int bufferedLines;
 
+    bool advanceLine = false;
     //public GameObject imageController;
     // Use this for initialization
     void Start()
@@ -72,6 +73,11 @@ public class DialogueManager : MonoBehaviour
         {
             speedMult = 1;
         }
+
+        if(Input.GetKeyDown(KeyCode.E) && !advanceLine)
+        {
+            advanceLine = true;
+        }
     }
 
     public void PlayDialogueTesting(string input)
@@ -82,7 +88,8 @@ public class DialogueManager : MonoBehaviour
 
     public void PlayDialogue(int input)
     {
-        //Debug.Log(input);
+        advanceLine = false;
+        Debug.Log(input);
         string lineToPrint = (string)dialogueLines[input];
 
         int locOfOpenBracket = lineToPrint.IndexOf("[");
@@ -113,6 +120,7 @@ public class DialogueManager : MonoBehaviour
         //textbox.SetActive(true);
         //spritebox.SetActive(true);
         //print("got here 1");
+        
         Text textbox = null;
         textbox = textBoxes[speaker].GetComponentInChildren<Text>();
         if (line.Length > 0)
@@ -138,10 +146,13 @@ public class DialogueManager : MonoBehaviour
         }
         //audio.Stop();
         float time = Time.time;
-        while (Time.time - time < delay / speedMult)
+        //while (Time.time - time < delay / (speedMult + .0000001f))
+        advanceLine = false;
+        while (!advanceLine)
         {
             yield return null;
         }
+        advanceLine = false;
         //audio.Stop();
         textBoxes[speaker].SetActive(false);
         //print("got here3");
@@ -175,4 +186,6 @@ public class DialogueManager : MonoBehaviour
         }
         numTextBoxes = count;
     }
+
+
 }
