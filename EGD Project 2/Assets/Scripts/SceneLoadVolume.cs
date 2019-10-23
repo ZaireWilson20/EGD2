@@ -29,6 +29,7 @@ public class SceneLoadVolume : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            Debug.Log("COLLIDING BBBBB");
             ChangeScene();
         }
     }

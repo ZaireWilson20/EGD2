@@ -7,7 +7,7 @@ public class CharacterSpawnerClass : MonoBehaviour
     public GameObject playerPrefab;
     public Transform[] spawnLocations;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GameObject player = GameObject.Instantiate(playerPrefab);
         player.transform.position = spawnLocations[SceneTransitionClass.spawnPoint].position;
